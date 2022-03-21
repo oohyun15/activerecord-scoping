@@ -6,7 +6,7 @@
 ```
 
 ## Abnormal ActiveRecord query
-- test class
+### test class
 ``` ruby
   class Post < ApplicationRecord
     has_many :comments
@@ -29,7 +29,7 @@
   end
 ```
 
-- queries
+### queries
 ```ruby
   Post.where(id: [1, 2, 3]).scope1.to_sql
   => "SELECT `posts`.* FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id` WHERE `posts`.`id` IN (1, 2, 3) AND (`posts`.`status` = 'open' OR `comments`.`status` = 'open')"
