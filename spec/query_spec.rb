@@ -17,7 +17,7 @@ describe 'ActiveRecord', type: :model do
       SQL
 
       expect(Post.where(type: 'Post::Normal').scope1.to_sql).to eq expected_query
-      expect(Post.where(type: 'Post::Normal').scope2.to_sql).not_to eq expected_query # SELECT `posts`.* FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id` WHERE (`posts`.`type` = 'Post::Normal' AND `posts`.`status` = 'open' OR `comments`.`status` = 'open')
+      expect(Post.where(type: 'Post::Normal').scope2.to_sql).to eq expected_query # SELECT `posts`.* FROM `posts` LEFT OUTER JOIN `comments` ON `comments`.`post_id` = `posts`.`id` WHERE (`posts`.`type` = 'Post::Normal' AND `posts`.`status` = 'open' OR `comments`.`status` = 'open')
 
       # same queries
       # expect(Post::Normal.scope1.to_sql).to eq expected_query
