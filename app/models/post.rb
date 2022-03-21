@@ -14,4 +14,6 @@ class Post < ApplicationRecord
     .available
     .or(Comment.available)
   }
+
+  class Post::Normal < Post; end
 end
