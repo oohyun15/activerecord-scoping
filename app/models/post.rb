@@ -1,5 +1,17 @@
 class Post < ApplicationRecord
-  scope :available, -> {
-    where(type: 'sports').or(where(status: 'open'))
+  has_many :comments
+
+  scope :available, -> { where(status: 'open') }
+
+  scope :scope1, -> {
+    left_joins(:comments)
+    .available
+    .or(where(comments: { status: 'open' }))
+  }
+
+  scope :scope2, -> {
+    left_joins(:comments)
+    .available
+    .or(Comment.available)
   }
 end
