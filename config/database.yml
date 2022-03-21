@@ -6,3 +6,7 @@ default: &default
 development:
   <<: *default
   database: activerecord_scope_development
+
+test:
+  <<: *default
+  database: activerecord_scope_test
